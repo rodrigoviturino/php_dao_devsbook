@@ -3,7 +3,7 @@
 require_once "DAO/UserDaoMysql.php";
 
 class Auth {
-  private $pdo;
+  private $pdo; // está fazendo a conexão com o banco
   private $baseUrl;
 
   public function __construct(PDO $pdo, $base_url){
@@ -27,6 +27,10 @@ class Auth {
     header("Location: ".$this->baseUrl."/login.php");
     exit;
 
+  }
+
+  public function validateLogin($email, $password){
+    $userDao = new UserDaoMysql($this->pdo);
   }
 
 }
