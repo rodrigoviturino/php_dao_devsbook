@@ -12,10 +12,10 @@ class Auth {
   }
 
   public function checkToken(){
-
+    // Verificando se o usuario tem token
     if( !empty($_SESSION["token"]) ){
       $token = $_SESSION["token"];
-
+      // Buscando o token no banco para comparar se é o mesmo para prosseguir
       $userDao = new UserDaoMysql($this->pdo);
       $user = $userDao->findByToken($token);
 

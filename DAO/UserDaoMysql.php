@@ -24,11 +24,14 @@ class UserDaoMysql implements UserDAO {
   }
 
   public function findByToken($token){
+
+    // Verificando se o campo token não está vázio
     if(!empty($token)){
       $sql = $this->pdo->prepare("SELECT * FROM users WHERE token = :token");
       $sql->bindValue(":token", $token);
       $sql->execute();
 
+      // Verificando se encontrou algum usuario
       if($sql->rowCount() > 0 ){
         $data = $sql->fetch(PDO::FETCH_ASSOC);
         $user = $this->generateUser($sql);
