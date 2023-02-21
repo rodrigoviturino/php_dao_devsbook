@@ -14,6 +14,8 @@
     }
   }
 
+  $_SESSION['flash'] = '<h4>E-mail e/ou senha inválidos.</h4>';
+
   header("Location: ".$base_url."/login.php");
   exit;
 

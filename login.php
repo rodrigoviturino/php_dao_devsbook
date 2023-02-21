@@ -20,6 +20,11 @@
     </header>
     <section class="container main">
         <form method="POST" action="<?= $base_url; ?>/login_action.php">
+            <?php if(!empty($_SESSION['flash'])): ?>
+                <?= $_SESSION['flash']; ?>
+                <?= $_SESSION['flash'] = ""; ?>
+            <?php endif; ?>
+
             <input placeholder="Digite seu e-mail" class="input" type="email" name="email" />
 
             <input placeholder="Digite sua senha" class="input" type="password" name="password" />
